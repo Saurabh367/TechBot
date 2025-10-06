@@ -1,0 +1,29 @@
+digraph ProjectFlow {
+    rankdir=LR;
+    node [shape=box, style=filled, fillcolor=lightblue];
+
+    User [label="User", shape=ellipse, fillcolor=lightgreen];
+
+    // Example Controllers with endpoints
+    ProductController_Endpoints [label="/api/products (GET,POST)\n/api/products/search (GET)", fillcolor=lightyellow];
+    ChatbotController_Endpoints [label="/api/chatbot/parse (POST)\n/api/chatbot/products (GET)", fillcolor=lightyellow];
+
+    // Controllers
+    ProductController;
+    ChatbotController;
+
+    // Services
+    ProductService;
+    OpenAiService;
+
+    // Repositories / Databases
+    ProductRepository;
+    CategoryRepository;
+    MySQLDB [shape=cylinder, fillcolor=tan];
+
+    // User -> API endpoints -> Controllers -> Services -> Repos/DB
+    User -> ProductController_Endpoints -> ProductController -> ProductService -> ProductRepository -> MySQLDB;
+    User -> ChatbotController_Endpoints -> ChatbotController -> OpenAiService;
+
+    // You can add more flows/mappings as needed
+}
