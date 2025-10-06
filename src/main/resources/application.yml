@@ -18,7 +18,7 @@ info:
 
 perplexity:
   api:
-    key: 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
+    key: ${key}
 
 app:
   ingestion:
